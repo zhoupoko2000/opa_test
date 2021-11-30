@@ -1,0 +1,29 @@
+{
+    "kind": "AdmissionReview",
+    "apiVersion": "admission.k8s.io/v1beta1",
+    "request": {
+      "operation": "CREATE",
+      "kind": {
+        "kind": "Pod",
+        "version": "v1"
+      },
+      "object": {
+        "metadata": {
+          "name": "myapp",
+          "annotations": {"patch1": "yes"}
+        },
+        "spec": {
+          "containers": [
+            {
+              "image": "nginx",
+              "name": "nginx-frontend"
+            },
+            {
+              "image": "mysql",
+              "name": "mysql-backend"
+            }
+          ]
+        }
+      }
+    }
+  }
