@@ -8,3 +8,11 @@ https://github.com/open-policy-agent/library/blob/master/kubernetes/mutating-adm
 ./opa run --server --set=default_decision=library/kubernetes/admission/mutating/main
 
 curl localhost:8181 -i -d @datatestpod.json -H 'Content-Type: application/json'
+
+my raised issue is 
+https://github.com/open-policy-agent/opa/issues/4066
+
+
+https://antonioberben.gitlab.io/website/posts/mutating-admission-webhook-with-opa/
+
+https://raw.githubusercontent.com/antonioberben/examples/master/mutating-admission-webhook/deployment.yaml

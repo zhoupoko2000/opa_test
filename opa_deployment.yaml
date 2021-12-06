@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mutate-example
+  namespace: demo-mutate
+  name: mutate-example
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: mutate-example
+  template:
+    metadata:
+      labels:
+        app: mutate-example
+      name: mutate-example
+    spec:
+      containers:
+        - image: openpolicyagent/opa:0.10.3
+          name: opa
+          ports:
+          - containerPort: 9443
+          args:
+          - "run"
+          - "--server"
+          - "--tls-cert-file=/certs/cert.pem"
+          - "--tls-private-key-file=/certs/key.pem"
+          - "--addr=0.0.0.0:9443"
+          - "--log-level=debug"
+          - "--log-format=json"
+          - "--format=pretty"
+          - "--set=default_decision=library/kubernetes/admission/mutating/main"
+          - "/policies/main.rego"
+          - "/policies/mutate.rego"
+          - "/policies/patch1.rego"
+
+          volumeMounts:
+            - readOnly: true
+              mountPath: /certs
+              name: server-cert
+            - readOnly: true
+              mountPath: /policies
+              name: mutate-policy
+      volumes:
+        - name: mutate-policy
+          configMap:
+            name: mutate-policy
+        - name: server-cert
+          secret:
+            secretName: mutate-example-tls
