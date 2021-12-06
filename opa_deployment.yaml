@@ -19,7 +19,7 @@ spec:
       name: mutate-example
     spec:
       containers:
-        - image: openpolicyagent/opa:0.10.3
+        - image: openpolicyagent/opa:0.35.0
           name: opa
           ports:
           - containerPort: 9443
@@ -32,6 +32,8 @@ spec:
           - "--log-level=debug"
           - "--log-format=json"
           - "--format=pretty"
+          - "--set=status.console=true"
+          - "--set=decision_logs.console=true"          
           - "--set=default_decision=library/kubernetes/admission/mutating/main"
           - "/policies/main.rego"
           - "/policies/mutate.rego"
