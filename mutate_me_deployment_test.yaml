@@ -5,6 +5,8 @@ metadata:
   namespace: demo-mutate
   labels:
     app: mutate-me
+  annotations:
+    patch1: "yes"
 spec:
   replicas: 1
   strategy: 
@@ -15,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        patch1: "yes"    
+        patch1: "yes"
       labels:
         app: mutate-me
     spec:

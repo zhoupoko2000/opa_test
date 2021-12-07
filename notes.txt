@@ -19,3 +19,4 @@ https://github.com/antonioberben/examples
 
 
 {"client_addr":"10.4.1.8:38438","level":"info","msg":"Sent response.","req_id":41,"req_method":"POST","req_path":"/","resp_body":"{\"apiVersion\":\"admission.k8s.io/v1\",\"kind\":\"AdmissionReview\",\"response\":{\"allowed\":true,\"patch\":\"W3sib3AiOiJhZGQiLCJwYXRjaCI6Ii9tZXRhZGF0YS9hbm5vdGF0aW9ucy9wYXRjaDEiLCJ2YWx1ZSI6InBhdGNoMV9hZGRlZCJ9LHsib3AiOiJhZGQiLCJwYXRjaCI6Ii9tZXRhZGF0YS9hbm5vdGF0aW9ucy9wYXRjaDFfc2V0IiwidmFsdWUiOiJ5ZXMifV0=\",\"patchType\":\"JSONPatch\",\"uid\":\"92982ca9-879b-4fee-996e-c7e939405384\"}}","resp_bytes":365,"resp_duration":2.773785,"resp_status":200,"time":"2021-12-06T20:57:15Z"}
+
